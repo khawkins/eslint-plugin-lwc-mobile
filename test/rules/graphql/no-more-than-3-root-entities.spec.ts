@@ -11,7 +11,16 @@ import {
 } from '../../../src/rules/graphql/no-more-than-3-root-entities';
 import { createScopedModuleRuleName } from '../../../src/util/rule-helpers';
 
-import { ruleTester } from '../../shared';
+import { RuleTester } from '@typescript-eslint/rule-tester';
+
+const RULE_TESTER_CONFIG = {
+    parser: '@graphql-eslint/eslint-plugin',
+    parserOptions: {
+        graphQLConfig: {}
+    }
+};
+
+const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(createScopedModuleRuleName(NO_MORE_THAN_3_ROOT_ENTITIES_RULE_ID), rule as any, {
     valid: [

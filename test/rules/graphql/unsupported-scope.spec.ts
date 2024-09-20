@@ -10,7 +10,17 @@ import {
     SCOPE_SUPPORTED_FOR_CERTAIN_ENTITIES_ONLY,
     OTHER_UNSUPPORTED_SCOPE
 } from '../../../src/rules/graphql/unsupported-scope';
-import { ruleTester } from '../../shared';
+
+import { RuleTester } from '@typescript-eslint/rule-tester';
+
+const RULE_TESTER_CONFIG = {
+    parser: '@graphql-eslint/eslint-plugin',
+    parserOptions: {
+        graphQLConfig: {}
+    }
+};
+
+const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run('@salesforce/lwc-mobile/offline-graphql-unsupported-scope', rule as any, {
     valid: [

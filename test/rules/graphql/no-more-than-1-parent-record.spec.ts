@@ -11,7 +11,16 @@ import {
 } from '../../../src/rules/graphql/no-more-than-1-parent-record';
 import { createScopedModuleRuleName } from '../../../src/util/rule-helpers';
 
-import { ruleTester } from '../../shared';
+import { RuleTester } from '@typescript-eslint/rule-tester';
+
+const RULE_TESTER_CONFIG = {
+    parser: '@graphql-eslint/eslint-plugin',
+    parserOptions: {
+        graphQLConfig: {}
+    }
+};
+
+const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(createScopedModuleRuleName(NO_MORE_THAN_1_PARENT_RECORD_RULE_ID), rule as any, {
     valid: [
